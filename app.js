@@ -11,7 +11,6 @@ const Router = require("./routes/indexRoutes")
 
 require("./models/database").connectDatabase();
 
-
 // to connect with same server
 app.use(cors());
 
@@ -27,10 +26,11 @@ app.use(express.urlencoded({extended:false}));
 
 
 app.use(bodyParser.json({extended : true}))
-app.use('/' , Router)
+app.use(bodyParser.urlencoded({extended:true}))
+// app.use('/' , Router)
 
 //routes
 
-app.use("/" , require("./routes/indexRoutes"));
+app.use("/" , Router);
 
 app.listen (process.env.PORT , console.log(`server running on port ${process.env.PORT}`))
