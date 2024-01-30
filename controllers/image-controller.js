@@ -2,21 +2,22 @@ const Grid = require('gridfs-stream');
 const mongoose = require("mongoose");
 
 const url = 'http://localhost:8080'
+
 let gfs , gridfsBucket
 const conn = mongoose.connection;
 conn.once("open" ,() =>{
-    gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db ,{
+    gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db , {
         bucketName : "fs"
     });
     gfs = Grid(conn.db ,mongoose.mongo);
     gfs.collection("fs");
 })
-exports.uploadImage =  (req, res ) =>{
 
+
+exports.uploadImage = (req, res ) =>{
         if(!req.file){
             return res.status(404).json({msg : "File not found"})
         }
-    
         const imageUrl = `${url}/file/${req.file.filename}`
         return res.status(200).json(imageUrl)   
 }
