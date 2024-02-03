@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {signupUser,loginUser} = require("../controllers/user-controller")
 const {uploadImage , getImage} = require("../controllers/image-controller")
-const {createPost} = require("../controllers/post-controller")
+const {createPost , getAllPosts} = require("../controllers/post-controller")
 const {authenticateToken} = require("../controllers/jwt-controller")
 const upload = require("../utils/upload")
 //Post /signup
@@ -21,5 +21,7 @@ router.get("/file/:filename" , getImage);
 
 //Post / create
 router.post("/create" , authenticateToken, createPost);
+router.get("/post" , authenticateToken , getAllPosts)
+
 
 module.exports = router;
