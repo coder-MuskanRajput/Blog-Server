@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {signupUser,loginUser} = require("../controllers/user-controller")
 const {uploadImage , getImage} = require("../controllers/image-controller")
-const {createPost , getAllPosts} = require("../controllers/post-controller")
+const {createPost , getAllPosts , getPost , updatePost , deletePost} = require("../controllers/post-controller")
 const {authenticateToken} = require("../controllers/jwt-controller")
 const upload = require("../utils/upload")
 //Post /signup
@@ -21,7 +21,18 @@ router.get("/file/:filename" , getImage);
 
 //Post / create
 router.post("/create" , authenticateToken, createPost);
-router.get("/post" , authenticateToken , getAllPosts)
 
+
+//get /posts
+router.get("/posts" , authenticateToken , getAllPosts)
+
+//get /details of post
+router.get("/post/:id" , authenticateToken , getPost);
+
+//put / edit 
+router.put("/update/:id" , authenticateToken , updatePost);
+
+// DELETE  / delete 
+router.delete("/delete/:id" , authenticateToken , deletePost);
 
 module.exports = router;
