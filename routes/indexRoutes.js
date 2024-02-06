@@ -6,7 +6,7 @@ const {signupUser,loginUser} = require("../controllers/user-controller")
 const {uploadImage , getImage} = require("../controllers/image-controller")
 const {createPost , getAllPosts , getPost , updatePost , deletePost} = require("../controllers/post-controller")
 const {authenticateToken} = require("../controllers/jwt-controller")
-const {newComment , getComments} = require("../controllers/comment-controller")
+const {newComment , getComments , deleteComment} = require("../controllers/comment-controller")
 const upload = require("../utils/upload")
 
 
@@ -41,4 +41,6 @@ router.post("/comment/new" , authenticateToken , newComment);
 // GET /comments
 router.get("/comments/:id" , authenticateToken , getComments)
 
+//delete /comment/delete
+router.delete("/comment/delete/:id" , authenticateToken , deleteComment )
 module.exports = router;
