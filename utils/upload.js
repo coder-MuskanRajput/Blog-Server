@@ -6,6 +6,8 @@ require("dotenv").config({path : "./.env"});
 const storage = new GridFsStorage({
 
     url : process.env.MONGODB_URL,
+    // options: {bodyParser : true},
+
     file : (request,file)=>{
         const match = ["image/png" ,"image/jpg"];
         if (match.indexOf(file.memeType) === -1){

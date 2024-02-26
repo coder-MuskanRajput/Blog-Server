@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const bodyParser = require("body-parser");
 const Router = require("./routes/indexRoutes")
+const fileUpload = require("express-fileupload")
 // import Router from("./routes/indexRoutes")
 
 //Db Connection
@@ -28,6 +29,8 @@ app.use(express.urlencoded({extended:false}));
 app.use(bodyParser.json({extended : true}))
 app.use(bodyParser.urlencoded({extended:true}))
 // app.use('/' , Router)
+
+app.use(fileUpload())
 
 //routes
 

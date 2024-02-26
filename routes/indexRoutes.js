@@ -17,7 +17,7 @@ router.post("/signup" , signupUser)
 router.post("/login" , loginUser)
 
 //Post / file
-router.post("/file/upload" , upload.single("file"), uploadImage);
+router.post("/file/upload" ,  uploadImage);
 router.get("/file/:filename" , getImage);
 
 //Post / create
