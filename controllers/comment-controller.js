@@ -20,10 +20,10 @@ exports.getComments = async(req,res)=>{
     }
 }
 
-exports.deleteComment = async(req,res) =>{
+exports.deleteComment = async(req,res)=>{
     try {
-        const comment = await Comment.findById(req.params.id);
-        await comment.delete();
+        const comment = await Comment.findByIdAndDelete(req.params.id);
+        // await comment.delete();
 
         res.status(200).json({msg: "Comment deleted successfully"})
     } catch (error) {
